@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout::head">
+</head>
+<body>
+	<div th:replace="layout/layout::messages"></div>
+	<header th:replace="layout/layout::header"></header>
+	<div class="container">
+		<h2 th:text="${Titulo}"></h2>
+		<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-outline-primary" th:text="#{text.user.button.create}" th:href="@{/users/form}">Crear</a>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th th:text="#{text.user.user}">usuario</th>
+					<th th:text="#{text.user.name}"></th>
+					<th th:text="#{text.user.primaryName}">Apellido paterno</th>
+					<th th:text="#{text.user.lastName}">Apellido materno</th>
+					<th th:text="#{text.user.email}">Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user:${Users}">
+					<td th:text="${user.user}"></td>
+					<td th:text="${user.name}"></td>
+					<td th:text="${user.primaryLastName}"></td>
+					<td th:text="${user.secundaryLastName}"></td>
+					<td th:text="${user.email}"></td>
+					<td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/users/form?idUser=} +${user.idUser}" th:text="#{text.user.button.edit}" class="btn btn-primary btn-xs">Editar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- <footer th:replace="layout/layout::footer"> </footer> -->
+</body>
+</html>

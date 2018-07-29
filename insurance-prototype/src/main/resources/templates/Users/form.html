@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout::head">
+</head>
+<body>
+	<div th:replace="layout/layout::messages"></div>
+	<header th:replace="layout/layout::header"></header>
+	<div class="container">
+		<h2 th:text="#{text.user.create.title}"></h2>
+		<form th:action=@{/users/form} th:object=${usercreate} method="post">
+		<div class="form-text text-danger" th:text="${#fields.hasErrors('email')}">INFO</div>
+		<div class="form-text text-danger" th:text="*{email}">INFO</div>
+			<input type="hidden" th:field="*{idUser}">
+			<table>
+				<tr>
+					<td th:text="#{text.user.user}">Usuario</td>
+					<td><input type="text" th:field="*{user}" class="form-control"></td>
+					<td><small class="form-text text-danger"
+						th:if="${#fields.hasErrors('user')}" th:errors="*{user}"></small></td>
+				</tr>
+				<tr>
+					<td th:text="#{text.user.name}">Nombre</td>
+					<td><input type="text" th:field="*{name}" class="form-control"></td>
+					<td><small class="form-text text-danger"
+						th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small></td>
+				</tr>
+				<tr>
+					<td th:text="#{text.user.primaryName}">Apellido paterno</td>
+					<td><input type="text" th:field="*{primaryLastName}"
+						class="form-control"></td>
+					<td><small class="form-text text-danger"
+						th:if="${#fields.hasErrors('primaryLastName')}"
+						th:errors="*{primaryLastName}"></small></td>
+				</tr>
+				<tr>
+					<td th:text="#{text.user.lastName}">Apellido materno</td>
+					<td><input type="text" th:field="*{secundaryLastName}"
+						class="form-control"></td>
+					<td><small class="form-text text-danger"
+						th:if="${#fields.hasErrors('secundaryLastName')}"
+						th:errors="*{secundaryLastName}"></small></td>
+				</tr>
+				<tr>
+					<td th:text="#{text.user.email}">Email</td>
+					<td><input type="text" th:field="*{email}"
+						class="form-control"></td>
+					<td><small class="form-text text-danger"
+						th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small></td>
+				</tr>
+				<tr>
+					<td th:text="#{text.user.password}">Contraseña</td>
+					<td><input type="password" th:field="*{password}"
+						class="form-control"></td>
+					<td><small class="form-text text-danger"
+						th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small></td>
+				</tr>
+				<tr>
+					<td th:text="#{text.user.roles}">Roles</td>
+					<td>
+					<select multiple class="form-control" th:field="*{userRoles}">
+							<option th:each="rol:${roles}" th:value="${rol.idRoles}" th:text="${rol.descriptions}"></option>
+					</select>
+					</td>
+					<td><small class="form-text text-danger"
+						th:if="${#fields.hasErrors('userRoles')}" th:errors="*{userRoles}"></small></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Crear" class="btn btn-primary"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<!-- <footer th:replace="layout/layout::footer"> </footer> -->
+</body>
+</html>

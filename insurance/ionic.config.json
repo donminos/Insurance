@@ -1,0 +1,7 @@
+{
+  "name": "Insurance",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

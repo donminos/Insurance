@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-title>
+      {{ 'LOGIN' | translate }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>{{'USERNAME'|translate}}</ion-label>
+      <ion-input #username type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>{{'PASSWORD'|translate}}</ion-label>
+      <ion-input #password type="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button block (click)="openWelcome(username.value,password.value)">{{'LOGIN' | translate}}</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

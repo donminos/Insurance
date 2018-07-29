@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout::head">
+</head>
+<body>
+	<div th:replace="layout/layout::messages"></div>
+	<section class="container" style="margin: 0 auto;">
+		<fieldset style="width: 400px;  margin: 25% auto;border:solid 1px black;border-radius: 20px;">
+			<form th:action="@{/login}" method="post" style="margin:40px;">
+				<ul style="list-style: none;">
+					<li th:text="#{text.user.user}">Usuario</li>
+					<li><input type="text" name="username" value=""></li>
+					<li th:text="#{text.user.password}">Contraseña</li>
+					<li><input type="password" name="password" value=""></li>
+					<li><input type="submit" th:value="#{text.access}" value="Acceder"></li>
+				</ul>
+			</form>
+		</fieldset>
+	</section>
+	<!-- <footer th:replace="layout/layout::footer"> </footer> -->
+</body>
+</html>

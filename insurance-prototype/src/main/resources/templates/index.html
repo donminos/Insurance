@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout::head">
+</head>
+<body>
+	<div th:replace="layout/layout::messages"></div>
+	<header th:replace="layout/layout::header"></header>
+	<section class="container">
+		<!--/* Hello world
+		<div sec:authorize="isAuthenticated()">
+			Logged user: <span sec:authentication="name">Bob</span> Roles: <span
+				sec:authentication="principal.authorities">[ROLE_USER,
+				ROLE_ADMIN]</span>
+		</div> */-->
+	</section>
+	<!--/*<footer th:replace="layout/layout::footer"> </footer> */-->
+</body>
+</html>
